@@ -133,6 +133,7 @@ function hideURLbar(){
         if(!navigator.userAgent.match(/iPad/i))
         {
             window.scrollTo(0,1);//scroll on iPhone only
+            again a test
         }
     }
 }*/
