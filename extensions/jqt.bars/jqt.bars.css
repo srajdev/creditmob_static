@@ -55,7 +55,7 @@ px <--> em factor is 16
   display: none;  /* build the tabbar off screen */
   height: 3.0625em  !important;
 	overflow: hidden;
-  position: absolute;
+  position: fixed;
   width: 100%;
   z-index: 100 !important;
   -webkit-box-shadow: 0 -0.05em 0 rgba(0,0,0,0.9);
@@ -109,7 +109,7 @@ px <--> em factor is 16
 
 #tabbar a > strong {
   bottom: 0;
-  color: #787878;
+  /*color: #787878;*/
   font: bold .625em "Helvetica Neue", Helvetica;
   overflow: hidden;
   position: absolute;
@@ -119,7 +119,7 @@ px <--> em factor is 16
   width: 100%;
   -webkit-font-smoothing: antialiased;
 }
-
+/*
 #tabbar a::after, #tabbar a::before {
   bottom: .875em;
   content: "";
@@ -132,21 +132,24 @@ px <--> em factor is 16
 }
 
 #tabbar a::before {
-  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(255,255,255,.6)), to(rgba(255,255,255,.3)));
+  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(255,255,255,1)), to(rgba(255,255,255,1)));
   z-index: 1;
 }
 
 #tabbar a::after {
   background-color: rgba(0,0,0,.75);
   z-index: 0;
-}
+}*/
 
 #tabbar a.enabled {
-  background-color: rgba(255,255,255,.10);
+  /*background-color: rgba(255,255,255,.10);*/
+  color: rgba(075,162,1,1) ;
+  /*background-color: rgba(0, 255, 0, .7);*/
+
 }
 
 #tabbar a.enabled > strong {
-  color: #FFF;
+  /*color: #FFF;*/
 }
 
 #tabbar a.enabled::before {

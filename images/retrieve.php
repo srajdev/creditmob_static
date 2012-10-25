@@ -58,6 +58,9 @@ foreach($arrayCleaned as $elem){
                     }
                     $iterator++;
 }
+if (!$UDID){
+    die('NO UDID');
+}
 
 $con = mysql_connect("localhost", "swapan_app", "Qwdfty13");
 
@@ -70,19 +73,24 @@ mysql_select_db("swapan_app", $con);
 $result = mysql_query("SELECT * from app_user where udid= '".$UDID."';") or die(mysql_error());
 
 if(mysql_affected_rows()==0){
-    $query = "INSERT INTO app_user(udid) VALUES ('" . $UDID ."');";
+    $udid_md5 = md5($UDID);
+    $query = "INSERT INTO app_user(udid, udid_hash) VALUES ('" . $UDID ."','".$udid_md5."');";
     $result = mysql_query($query) or die(mysql_error());
 }
 
 $result = mysql_query("SELECT * from app_user where udid='".$UDID."';") or die(mysql_error());
 
+
 while ($row = mysql_fetch_array($result)){
-    $USER_ID = $row['id'];
+    $USER_ID = $row['udid_hash'];
 }
 
  
 //$params = "UDID=".$UDID."&CHALLENGE=".$CHALLENGE."&DEVICE_NAME=".$DEVICE_NAME."&DEVICE_PR ODUCT=".$DEVICE_PRODUCT."&DEVICE_VERSION=".$DEVICE_VERSION;
 // enrollment is a directory
 $params = "app_user_id=".$USER_ID;
-header('Location: http://srajdev.com/trial?'.$params);
+$expire = time() + (20*365*24*60*60);
+ini_set('user_agent' , 'Mozilla/5.0 (iPhone; CPU iPhone OS 5_1_1 like Mac OS X) AppleWebKit/534.46 (KHTML, like Gecko) Version/5.1 Mobile/9B206 Safari/7534.48.3');
+setcookie("app_user_id", $USER_ID, $expire, '/');
+header('Location: http://srajdev.com/m?'.$params);
 ?>

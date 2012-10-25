@@ -6822,6 +6822,7 @@ if ( document.documentElement.currentStyle ) {
 curCSS = getComputedStyle || currentStyle;
 
 function getWH( elem, name, extra ) {
+    console.log(elem);
 
 	// Start with offset property
 	var val = name === "width" ? elem.offsetWidth : elem.offsetHeight,

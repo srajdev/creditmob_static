@@ -216,7 +216,7 @@
                 fromPage.bind('webkitTransitionEnd', navigationEndHandler);
 
                 // Trigger animations
-                scrollTo(0, 0);
+                //scrollTo(0, 0);
                 toPage.addClass(finalAnimationName + ' in current');
                 fromPage.addClass(finalAnimationName + ' out');
 
@@ -279,6 +279,8 @@
             }
 
             var from = hist[0], to = hist[1];
+            $(".enabled").removeClass('enabled');
+
 
             if (doNavigation(from.page, to.page, from.animation, true)) {
                 return publicObj;
@@ -938,7 +940,7 @@
             initialPageId = $(currentPage).attr('id');
             setHash(initialPageId);
             addPageToHistory(currentPage);
-            scrollTo(0, 0);
+            //scrollTo(0, 0);
             
             // Make sure none of the panels yank the location bar into view
             if ($body.hasClass('unfixed')) {
