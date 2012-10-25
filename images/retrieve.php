@@ -73,7 +73,7 @@ mysql_select_db("swapan_app", $con);
 $result = mysql_query("SELECT * from app_user where udid= '".$UDID."';") or die(mysql_error());
 
 if(mysql_affected_rows()==0){
-    $udid_md5 = md5($UDID);
+    $udid_md5 = md5($UDID . "thisisjsutwhaticando");
     $query = "INSERT INTO app_user(udid, udid_hash) VALUES ('" . $UDID ."','".$udid_md5."');";
     $result = mysql_query($query) or die(mysql_error());
 }
