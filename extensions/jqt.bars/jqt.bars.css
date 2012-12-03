@@ -50,7 +50,7 @@ px <--> em factor is 16
 #tabbar {
   /*background: -webkit-gradient(linear, left top, left bottom, from(#000), to(#000), color-stop(.01, #000),
     color-stop(.02, #555), color-stop(.03, #2d2d2d), color-stop(.5, #151515), color-stop(.51, #000));*/
-  background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#8B0000), to(#DC143C));
+  background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#3b5998), to(#3b5998));
   bottom: 0;
   display: none;  /* build the tabbar off screen */
   height: 3.0625em  !important;
@@ -143,7 +143,7 @@ px <--> em factor is 16
 
 #tabbar a.enabled {
   /*background-color: rgba(255,255,255,.10);*/
-  color: rgba(075,162,1,1) ;
+  color: orange; /*rgba(075,162,1,1) ;*/
   /*background-color: rgba(0, 255, 0, .7);*/
 
 }

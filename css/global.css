@@ -2,7 +2,7 @@ a.no_udid{
     cursor: pointer;}
 
 .appname{
-    color: #800000;
+    color: black;
     white-space: normal;
     font-size: 12px;}
 
@@ -58,7 +58,7 @@ a.no_udid{
 
 #jqt ul li a small.credits, .full_credits{
     color: white;
-    background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#DC143C), to(#8B0000)); 
+    background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#EE7711), to(#FF8811)); 
     border-radius: 5px;
     margin-top: 50%;
     text-align: center;
@@ -204,8 +204,8 @@ a {
     font-size:28px;
     font-weight: 900;
     font-style: italic;
-    color: #00CC66;}
-   
+    color: #FFA500;}
+  
 a.tos{
     margin-left: 10px;
     font-size: 28px;
@@ -224,7 +224,7 @@ img.refresh_image{
 
 #jqt ul li a.refresh{
     text-align: center;
-    color: #800000;
+    color: #3b5998;
     white-space: normal;
     font-size: 16px;}
 

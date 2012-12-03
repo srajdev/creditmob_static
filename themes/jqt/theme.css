@@ -20,7 +20,7 @@ body {
     height: 45px;
     /*background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#900000), to(#D00000));*/
     /*background: grey; url(img/toolbar.png) #000000 repeat-x; DC143C 8B0000*/
-    background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(crimson), to(darkRed));
+    background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#3b5998), to(#3b5998));
     position: relative;
 }
 #jqt .black-translucent .toolbar {
@@ -164,7 +164,7 @@ body {
     border-bottom: #555858;
     list-style-type: none;
     padding: 10px 10px 10px 10px;
-    background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#FFF5EE), to(#F5F5F5));
+    background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#F4F9FF), to(#F5F5F5));
     overflow: hidden;
 }
 #jqt ul li.arrow {
