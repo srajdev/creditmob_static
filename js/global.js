@@ -67,7 +67,8 @@ var init = function(){
         }
 
     })*/
-    
+
+
     function no_udid($elem){
         //if(!allowClick) return false;
         //preventGhostClick();
@@ -80,6 +81,7 @@ var init = function(){
     //$('a.has_udid').live('click', function (e){
     function has_udid($elem){
         var $action_url = $elem.attr('action_url');
+        $action_url=$action_url.replace('thisisnotcoolbuddy', '');
         window.location.href = $action_url;
 
         e.preventDefault();
@@ -135,6 +137,7 @@ var init = function(){
         }
     })
 
+
     $('a.refresh_button').bind('click', function(e){
         window.location.reload();
     })
@@ -166,11 +169,81 @@ var init = function(){
         window.location.href = "http://srajdev.com/tos";
 
     })
+
+    getRecos();
     
 }
 
 $(document).ready(init);
+function preventGhostClick(){
+    allowClick = false;
+    setTimeout(function(){
+            allowClick = true;
+    },900);
+}
+function no_udid($elem){
+    //if(!allowClick) return false;
+    //preventGhostClick();
+    if(confirm('You need to register your Device first before you can install apps and earn credits')){
+        window.location.href = 'http://srajdev.com/media/images/signed.mobileconfig';
+    }
+}
+function has_udid($elem){
+    var $action_url = $elem.attr('action_url');
+    $action_url = $action_url.replace('thisisnotcoolbuddy', '');
+    window.location.href = $action_url;
 
+    e.preventDefault();
+}
+
+function too_many($elem){
+    alert('Sorry, you have exceeded the download limit. Please try again in 5-10 minutes.');
+}
+
+function setActive($el){
+    $el.css('background-color', '#53B401');
+    //$el.addClass('active');
+    setTimeout(function(){
+        removeActive($el);
+    //    $el.removeClass('active');
+    }, 900);
+}
+function removeActive($el){
+    $el.css('background-color' , 'transparent');
+    //$('.active').removeClass('active');
+}
+
+function bindClick($el, func){
+    var startTime, endTime;
+    var d= new Date();
+    var gbMove = false;
+    allowClick = true;
+    console.log($el);
+    $el.bind('touchstart',function(event) {
+        setActive($(this));
+        startTime = new Date().getTime(); 
+        gbMove = false;        
+    });
+
+    $el.bind('touchmove',function(event) {
+        removeActive($(this));
+        gbMove = true;
+    });
+
+    $el.bind('touchend',function(event) {
+        endTime = new Date().getTime();
+        var difTime = (endTime-startTime);
+        if(!gbMove && difTime > 100){
+            var $ok  = $(this);
+            if(!allowClick){
+                    return false;}
+            else{
+                preventGhostClick();
+                func($(this));
+            }
+        }
+    });
+}
 function checkCredits($me){
     credits = $me.find('.credits').attr('val');
     myCredits = $('.my_credits').attr('val');
@@ -208,3 +281,20 @@ function rewardsAjax(email, userId, rewardNo){
         }
     });
 }
+
+function getRecos(){
+    var use_as_key = $('.use_as_key').text();
+    $.ajax({
+        type: "GET",
+        url : '/recos',
+        data: {'udid_hash' : use_as_key},
+        success: function(data){
+            $('.recos').append(data);
+            $('.loading').parent().remove();
+            jQT.setPageHeight();
+            bindClick($('a.no_udid'), no_udid);
+            bindClick($('a.has_udid'), has_udid);
+            bindClick($('a.toomany'), too_many);
+        }
+    })
+ }

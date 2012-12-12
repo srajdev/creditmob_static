@@ -158,7 +158,7 @@ a {
 #tabbar li.second strong{
     bottom: 8px;
     /*color: white;*/
-    width: 220px;
+    width: 215px;
     font-size: 24px;}
 
 .disclaimer{
@@ -231,3 +231,6 @@ img.refresh_image{
 #jqt ul li.help_stuff{
     height: auto;
 }
+
+.use_as_key{
+    visibility: hidden; }
